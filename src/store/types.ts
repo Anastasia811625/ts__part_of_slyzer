@@ -1,0 +1,5 @@
+export enum Actions {
+  FILTER_USERS = "FILTER_USERS",
+  AUTH_LOGIN = "AUTH_LOGIN",
+  AUTH_LOGOUT = "AUTH_LOGOUT",
+}

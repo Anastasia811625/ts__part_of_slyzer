@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Table, TableBody, TableCell, TableContainer, TableHead, Paper, TableRow } from "@material-ui/core";
 import axios from "axios";
+import { Filter } from '../Filter';
 
 interface IUser {
   id: number,
@@ -21,27 +22,30 @@ export const UserList: React.FC = (): JSX.Element => {
   }, [])
 
   return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>id</TableCell>
-            <TableCell>name</TableCell>
-            <TableCell>login</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component='th' scope='row'>
-                {row.id}
-              </TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.login}</TableCell>
+    <>
+      <Filter />
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>id</TableCell>
+              <TableCell>name</TableCell>
+              <TableCell>login</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.name}>
+                <TableCell component='th' scope='row'>
+                  {row.id}
+                </TableCell>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.login}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   )
 };
