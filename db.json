@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": 2,
+      "name": "Ervin Howell",
+      "login": "Shanna@melissa.tv",
+      "address": {
+        "street": "Victor Plains",
+        "suite": "Suite 879",
+        "city": "Wisokyburgh",
+        "zipcode": "90566-7771",
+        "geo": {
+          "lat": "-43.9509",
+          "lng": "-34.4618"
+        }
+      }
+    },
+    {
+      "name": "Анастасия ",
+      "login": "Kraeva_AV",
+      "password": "123",
+      "id": 3
+    },
+    {
+      "name": "Stacy",
+      "login": "Anastasia",
+      "password": "123",
+      "id": 4
+    },
+    {
+      "name": "Stacy",
+      "login": "Anastasia",
+      "password": "123",
+      "id": 5
+    }
+  ]
+}
