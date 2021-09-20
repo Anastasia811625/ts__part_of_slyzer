@@ -6,7 +6,7 @@ import {
   TextField,
   Paper,
 } from '@material-ui/core';
-import axios from "axios";
+// import axios from "axios";
 
 export type UserDataType = {
   name?: string,
@@ -14,26 +14,33 @@ export type UserDataType = {
   password: string,
 }
 
+const initialState: UserDataType = {
+  name: '',
+  login: '',
+  password: '',
+}
+
 export const RegisterForm: FC = (): JSX.Element => {
-  const [formState, setFormState] = useState<UserDataType>({
-    name: '',
-    login: '',
-    password: '',
-  })
+  const [formState, setFormState] = useState<UserDataType>(initialState)
 
   const setFormStateFunc = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormState({
-      ...formState, [e.target.name]: e.target.value
+      ...formState, [e.target.name]: e.target.value.trim()
     })
   }
 
   const addUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    console.log('new user:', formState)
     registerUser(formState)
+    setFormState(initialState)
   }
 
-  async function registerUser(formState: object) {
-    const res = await axios.post<UserDataType[]>('/users', formState);
+  // async function registerUser(formState: object) {
+  //   const res = await axios.post<UserDataType[]>('/users', formState);
+  // }
+  const registerUser = (formState: object) => {
+    //action
   }
 
   return (

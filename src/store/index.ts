@@ -1,12 +1,12 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import { filterReducer } from "./reducers/filterReducer";
-// import { authReducer } from "./reducers/authReducer";
+import { usersListReducer } from './reducers/usersListReducer';
 
 const rootReducer = combineReducers({
-  filtredUserList: filterReducer,
-  // token: authReducer,
+  usersList: usersListReducer,
 });
+
+export type RootState = ReturnType<typeof rootReducer>
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

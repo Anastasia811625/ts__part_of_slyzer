@@ -17,8 +17,8 @@ import {
 } from '@material-ui/core';
 import VisOffIcon from '@material-ui/icons/VisibilityOffOutlined';
 import VisIcon from '@material-ui/icons/VisibilityOutlined';
-import { UserDataType } from '../RegisterForm/RegisterForm';
 import axios from 'axios';
+import { UserDataType } from '../RegisterForm/RegisterForm';
 
 interface IPropsAuthForm {
   children?: React.ReactNode,

@@ -4,13 +4,13 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { AuthPage } from './pages/AuthPage';
 import { RegisterFormPage } from './pages/RegisterFormPage';
 import { UploadFilePage } from './pages/UploadFilePage';
-import { UserListPage } from './pages/UserListPage';
+import { UsersListPage } from './pages/UsersListPage';
 
 export const Routes: FC = () => {
-     
+
   return (
     <Switch>
-      <Route path='/userList' component={UserListPage} />
+      <Route path='/UsersList' component={UsersListPage} />
       <Route path='/auth' component={AuthPage} />
       <Route path='/register' component={RegisterFormPage} />
       <Route path='/uploadFile' component={UploadFilePage} />
@@ -18,4 +18,3 @@ export const Routes: FC = () => {
     </Switch>
   )
 }
- 

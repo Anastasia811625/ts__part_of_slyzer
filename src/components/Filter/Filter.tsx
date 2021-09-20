@@ -1,13 +1,18 @@
 import React from "react";
-import axios from 'axios';
 import { TextField, Button } from "@material-ui/core";
-import { UserDataType } from "../RegisterForm";
+import { useSelector, TypedUseSelectorHook } from 'react-redux';
+import { RootState } from '../../store/index';
+import { userType } from '../../types';
+import { useActions } from '../../hooks/actions.hook';
 
 export const Filter = () => {
   const [userData, setUserData] = React.useState({
     login: '',
     name: '',
   });
+  const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector
+  const { usersList } = useTypedSelector(state => state)
+  const {setUsersList} = useActions()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserData({ ...userData, [e.target.name]: e.target.value })
@@ -19,24 +24,20 @@ export const Filter = () => {
       login: '',
       name: '',
     })
-    getUserList()
-  }
-  
-  async function getUserList() {
-    const res = await axios.get<UserDataType[]>('/users')
-    console.log(res.data.filter(user => user.name?.includes(userData.name) && user.login?.includes(userData.login)))
+    const filtredList = usersList.filter((user:userType) => user.name?.includes(userData.name) && user.login?.includes(userData.login))
+    setUsersList(filtredList)
   }
 
   return (
     <form onSubmit={filterList}>
       <TextField
-        name='login'
-        value={userData.login}
+        name='name'
+        value={userData.name}
         onChange={handleChange}
       />
       <TextField
-        name='name'
-        value={userData.name}
+        name='login'
+        value={userData.login}
         onChange={handleChange}
       />
       <Button type='submit' children='filter' />

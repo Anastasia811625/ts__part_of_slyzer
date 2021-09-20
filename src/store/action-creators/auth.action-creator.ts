@@ -1,12 +1,5 @@
-import { useApi } from "../../hooks/api.hook";
-import { Actions } from "../types";
+import { Actions, ActionType } from '../../types';
 
-export const authLogin = (formData) => async (dispatch) => {
-  const request = useApi();
-
-  /* const { token } = await request("/auth/login", {
-    method: "POST",
-    body: formData,
-  }); */
+export const authLogin = (formData: object) => async (dispatch: (action: ActionType) => void) => {
   dispatch({ type: Actions.AUTH_LOGIN, payload: formData });
 };

@@ -1,24 +1,18 @@
 import * as React from "react";
 import { Table, TableBody, TableCell, TableContainer, TableHead, Paper, TableRow } from "@material-ui/core";
-import axios from "axios";
-import { Filter } from '../Filter';
+import { Filter } from '../Filter/Filter';
+import { useSelector, TypedUseSelectorHook } from 'react-redux';
+import { RootState } from '../../store/index';
+import { useActions } from '../../hooks/actions.hook';
+import { userType } from '../../types';
 
-interface IUser {
-  id: number,
-  name: string,
-  login: string
-}
-
-export const UserList: React.FC = (): JSX.Element => {
-  const [rows, setRows] = React.useState<IUser[]>([]);
-
-  async function GetUserList() {
-    const res = await axios.get('/users')
-    setRows(res.data)
-  }
+export const UsersList: React.FC = (): JSX.Element => {
+  const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector
+  const { usersList: UsersList } = useTypedSelector(state => state)
+  const { getUsersList } = useActions()
 
   React.useEffect(() => {
-    GetUserList()
+    getUsersList()
   }, [])
 
   return (
@@ -34,7 +28,7 @@ export const UserList: React.FC = (): JSX.Element => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {UsersList.map((row: userType) => (
               <TableRow key={row.name}>
                 <TableCell component='th' scope='row'>
                   {row.id}
